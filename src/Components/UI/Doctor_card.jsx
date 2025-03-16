@@ -5,7 +5,7 @@ const DoctorCard = ({ image, name, speciality, doctorId }) => {
  const navigate = useNavigate();
  console.log(doctorId)
   return (
-    <div className="border rounded-lg p-4 shadow-md w-[180px]" onClick={() => navigate(`/doctor/${doctorId}`)}>
+    <div className=" rounded-lg p-4 shadow-lg w-[180px]" onClick={() => navigate(`/doctor/${doctorId}`)}>
       <div className="flex flex-col items-center">
         <div className="flex justify-center h-[100px]">
           <img 

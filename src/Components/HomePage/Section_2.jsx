@@ -1,8 +1,10 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+ import { useAuth } from '../../context/AuthContext';
 
 export const Section_2 = () => {
     const navigate = useNavigate();
+    const { isLoggedIn, login } = useAuth();
 
     return (
         <div className="mt-[100px] px-4 sm:px-6 lg:px-8">
@@ -15,12 +17,27 @@ export const Section_2 = () => {
                     <h1 className="text-white text-2xl mb-4">
                         Book Appointment With 100+ Trusted Doctors
                     </h1>
-                    <button
+                   
+                   {isLoggedIn ?(
+                    <>
+                      <button
+                        className="bg-white text-black px-4 py-2 rounded-3xl mt-4 w-full md:w-[160px] hover:bg-gray-100 transition duration-300"
+                        onClick={() => navigate('/signup')}
+                    >
+                        Book Now
+                    </button>
+                    </>
+                   ):(
+                    <>
+ <button
                         className="bg-white text-black px-4 py-2 rounded-3xl mt-4 w-full md:w-[160px] hover:bg-gray-100 transition duration-300"
                         onClick={() => navigate('/signup')}
                     >
                         Create account
                     </button>
+                    </>
+                   )}
+                    
                 </div>
 
                 {/* Image Section */}
