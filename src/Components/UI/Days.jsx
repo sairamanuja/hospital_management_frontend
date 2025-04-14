@@ -35,8 +35,8 @@ const formatTime = (time) => {
   };
 
   export const TimeSlot = ({ starttime, endtime, isSelected, onClick, isBooked }) => {
-    const formattedStartTime = formatTime(starttime); // Convert start time
-    const formattedEndTime = formatTime(endtime); // Convert end time
+    const formattedStartTime = formatTime(starttime); 
+    const formattedEndTime = formatTime(endtime); 
   
     return (
       <div

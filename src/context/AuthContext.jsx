@@ -1,25 +1,26 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
 
-// Create a context for authentication
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  // Initialize isLoggedIn from localStorage
-  const [isLoggedIn, setIsLoggedIn] = useState(() => {
-    const storedAuth = localStorage.getItem('isLoggedIn');
-    return storedAuth ? JSON.parse(storedAuth) : false;
-  });
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  // Update localStorage whenever isLoggedIn changes
   useEffect(() => {
-    localStorage.setItem('isLoggedIn', JSON.stringify(isLoggedIn));
-  }, [isLoggedIn]);
+    const savedLoginStatus = localStorage.getItem('isLoggedIn');
+    if (savedLoginStatus === 'true') {
+      setIsLoggedIn(true);
+    }
+  }, []);
 
-  const login = () => setIsLoggedIn(true);
+  const login = () => {
+    setIsLoggedIn(true);
+    localStorage.setItem('isLoggedIn', 'true');
+  };
+
   const logout = () => {
+    setIsLoggedIn(false);
     localStorage.removeItem('isLoggedIn');
     localStorage.removeItem('token');
-    setIsLoggedIn(false);
   };
 
   return (
@@ -29,5 +30,6 @@ export const AuthProvider = ({ children }) => {
   );
 };
 
-// Custom hook to use the AuthContext
-export const useAuth = () => useContext(AuthContext);
+export const useAuth = () => {
+  return useContext(AuthContext);
+};

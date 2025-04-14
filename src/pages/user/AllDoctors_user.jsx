@@ -39,7 +39,6 @@ export const AllDoctors_user = () => {
     fetchDoctors();
   }, []);
 
-  // Handle speciality click
   const handleSpecialityClick = (speciality) => {
     setSelectedSpeciality(speciality === selectedSpeciality ? '' : speciality); // Toggle selected speciality
   };
@@ -60,7 +59,6 @@ export const AllDoctors_user = () => {
   return (
     <MainLayout>
       <div className="flex flex-col md:flex-row items-center justify-center p-4">
-        {/* Doctor Specialities Section */}
         <div className="w-full  md:w-[20%] mb-6 md:mb-0">
           <h1 className="text-xl font-bold mb-4">Doctor Specialities</h1>
           {uniqueSpecialities.length > 0 ? (
@@ -77,7 +75,6 @@ export const AllDoctors_user = () => {
           )}
         </div>
 
-        {/* Doctors List Section */}
         <div className="w-full md:w-[80%]">
           <div className="flex flex-wrap justify-center gap-4">
             {filteredDoctors.length > 0 ? (

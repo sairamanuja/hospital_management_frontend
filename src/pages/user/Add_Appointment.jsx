@@ -14,7 +14,6 @@ export const Add_Appointment = () => {
 
   const { id } = useParams();
 
-  // Fetch doctor details
   useEffect(() => {
     const fetchDoctor = async () => {
       try {
@@ -27,10 +26,9 @@ export const Add_Appointment = () => {
     fetchDoctor();
   }, [id]);
 
-  // Fetch appointments
-  useEffect(() => {
+          useEffect(() => {
     const fetchAppointments = async () => {
-      try {
+         try {
         const response2 = await API.get(`/user/allAppointment/${id}`);
         const transformedAppointments = transformAppointments(response2.data.appointments);
         setAppointments(transformedAppointments);
@@ -42,7 +40,6 @@ export const Add_Appointment = () => {
     fetchAppointments();
   }, [id]);
 
-  // Function to transform the appointments data
   const transformAppointments = (appointments) => {
     if (!appointments) return [];
 

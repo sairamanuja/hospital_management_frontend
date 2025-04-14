@@ -14,10 +14,8 @@ export const Login = () => {
   const { isLoggedIn, login } = useAuth();
 
   useEffect(() => {
-    // Check if the user is logged in
     const isLoggedIn = localStorage.getItem('isLoggedIn');
 
-    // Redirect to /home if logged in
     if (isLoggedIn === 'true') {
       navigate('/');
     }
@@ -29,19 +27,15 @@ export const Login = () => {
     setError('');
 
     try {
-      // Login API call
       const response = await axios.post('http://localhost:3000/user/login', {
         email,
         password,
       });
 
-      // Store token in localStorage
       localStorage.setItem('token', response.data.token);
 
-      // Update authentication state
       login();
 
-      // Redirect to dashboard
       navigate('/');
     } catch (error) {
       console.error('Login failed:', error);
@@ -60,11 +54,9 @@ export const Login = () => {
           <h1 className="text-2xl font-bold pb-2">Login</h1>
           <p className="text-gray-500 pb-4">Please login to book an appointment</p>
 
-          {/* Display error message */}
           {error && <p className="text-sm text-red-500 mb-4">{error}</p>}
 
           <form onSubmit={handleLogin}>
-            {/* Email Input */}
             <TextBox
               label="Email"
               type="email"
@@ -75,7 +67,6 @@ export const Login = () => {
               disabled={loading}
             />
 
-            {/* Password Input */}
             <TextBox
               label="Password"
               type="password"
@@ -86,7 +77,6 @@ export const Login = () => {
               disabled={loading}
             />
 
-            {/* Login Button */}
             <button
               type="submit"
               className="w-full bg-blue-500 text-white p-2 rounded-md mt-4 hover:bg-blue-600 transition duration-300 disabled:bg-blue-300"
@@ -95,7 +85,6 @@ export const Login = () => {
               {loading ? 'Logging in...' : 'Login'}
             </button>
 
-            {/* Signup Link */}
             <p className="text-gray-500 text-center mt-4">
               Don't have an account?{' '}
               <Link to="/signup" className="text-blue-500 hover:underline">

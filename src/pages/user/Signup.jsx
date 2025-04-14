@@ -30,7 +30,6 @@ export const Signup = () => {
 
       console.log(response.data);
 
-      // Redirect to login page after successful signup
       navigate('/login');
     } catch (error) {
       console.error('Signup failed:', error);
@@ -48,13 +47,11 @@ export const Signup = () => {
           <h1 className="text-2xl font-bold pb-2">Create Account</h1>
           <p className="text-gray-500 pb-4">Please sign up to book an appointment</p>
 
-          {/* Display error message */}
           {error && (
             <p className="text-sm text-red-500 mb-4">{error}</p>
           )}
 
           <form onSubmit={handleSubmit}>
-            {/* Full Name */}
             <TextBox
               label="Full Name"
               type="text"
@@ -64,7 +61,6 @@ export const Signup = () => {
               aria-label="Full Name"
             />
 
-            {/* Email */}
             <TextBox
               label="Email"
               type="email"
@@ -74,7 +70,6 @@ export const Signup = () => {
               aria-label="Email"
             />
 
-            {/* Password */}
             <TextBox
               label="Password"
               type="password"
@@ -84,7 +79,6 @@ export const Signup = () => {
               aria-label="Password"
             />
 
-            {/* Address */}
             <TextBox
               label="Address"
               type="text"
@@ -94,17 +88,12 @@ export const Signup = () => {
               aria-label="Address"
             />
 
-            {/* Phone */}
             <TextBox
               label="Phone"
               type="tel"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-              placeholder="Enter your phone number"
-              aria-label="Phone"
+              value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="Enter your phone number" aria-label="Phone"
             />
 
-            {/* Submit Button */}
             <button
               type="submit"
               className="w-full bg-blue-500 text-white p-2 rounded-md mt-4 hover:bg-blue-600 transition duration-300 disabled:bg-blue-300"
@@ -114,7 +103,6 @@ export const Signup = () => {
             </button>
           </form>
 
-          {/* Login Link */}
           <p className="mt-4 text-gray-500 text-center">
             Already have an account?{' '}
             <Link to="/login" className="text-blue-500 hover:underline">

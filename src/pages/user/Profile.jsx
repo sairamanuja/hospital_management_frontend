@@ -17,7 +17,7 @@ export const Profile = () => {
             },
           });
           console.log('User data:', response.data);
-          setUser(response.data.user); // Assuming the API returns { user: { ... } }
+          setUser(response.data.user);
         } catch (error) {
           console.error('Error fetching user profile:', error);
         }
@@ -26,7 +26,7 @@ export const Profile = () => {
     }, []);
   
     if (!user) {
-      return <p>Loading...</p>; // Show a loading message while fetching data
+      return <p>Loading...</p>;
     }
   
     return (
@@ -46,8 +46,8 @@ export const Profile = () => {
           <p className="pt-2">Phone: {user.phone}</p>
           <p className="pt-2">Address: {user.address}</p>
           <p className="text-gray-500 underline-offset-4 underline pt-4">BASIC INFORMATION</p>
-          <p className="pt-2">Gender: Male</p> {/* Add gender field to the API if needed */}
-          <p className="pt-2">Date of Birth: 12/12/1990</p> {/* Add DOB field to the API if needed */}
+          <p className="pt-2">Gender: Male</p> 
+          <p className="pt-2">Date of Birth: 12/12/1990</p> 
           <div className="flex flex-row gap-4">
             <button className="bg-blue-500 text-white p-2 rounded-md mt-4">Edit</button>
             <button className="bg-blue-500 text-white p-2 rounded-md mt-4">Save Information</button>

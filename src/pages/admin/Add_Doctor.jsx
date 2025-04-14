@@ -21,7 +21,6 @@ export const Add_Doctor = () => {
   const handleAddDoctor = async (e) => {
     e.preventDefault();
 
-    // Create the data object with matching field names
     const doctorData = {
       name: doctorName,
       email: doctorEmail,
