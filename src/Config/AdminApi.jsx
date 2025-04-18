@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const API_ADMIN  = axios.create({ baseURL: "http://localhost:3000" });
+export const API_ADMIN  = axios.create({ baseURL: "https://hospital-managemt.onrender.com" });
 
 API_ADMIN.interceptors.request.use(
   (config) => {
