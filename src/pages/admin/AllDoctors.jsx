@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import {API} from "../../Config/Api"
-import { AdminLayout } from '../../Components/Layouts/AdminLayout';
+import { API_ADMIN } from '../../Config/AdminApi';
+import { AdminLayout } from '../../components/Layouts/AdminLayout';
 import Neurologist from "../../assets/HomePage/Neurologist.png";
 
 export const AllDoctors = () => {
@@ -13,7 +13,7 @@ export const AllDoctors = () => {
         const fetchDoctors = async () => {
             try {
                 console.log('Fetching doctors...');
-                const response = await API.get('/admin/allDoctor');
+                const response = await API_ADMIN.get('/admin/allDoctor');
                 console.log('Response received:', response);
                 
                 if (response.data.doctors) {

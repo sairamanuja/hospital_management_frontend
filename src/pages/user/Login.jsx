@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
-import { MainLayout } from '../../components/Layouts/MainLayout';
+import { MainLayout } from '../../Components/Layouts/MainLayout';
 import { TextBox } from '../../components/UI/TextBox';
 import { useAuth } from '../../context/AuthContext';
 
@@ -87,7 +87,7 @@ export const Login = () => {
 
             <p className="text-gray-500 text-center mt-4">
               Don't have an account?{' '}
-              <Link to="/signup" className="text-blue-500 hover:underline">
+              <Link to="/user/signup" className="text-blue-500 hover:underline">
                 Sign up
               </Link>
             </p>

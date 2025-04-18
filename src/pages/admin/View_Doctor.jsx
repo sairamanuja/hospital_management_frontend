@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { API } from "../../Config/Api";
-import { AdminLayout } from '../../Components/Layouts/AdminLayout';
+import { API_ADMIN } from "../../Config/AdminApi";
+import { AdminLayout } from '../../components/Layouts/AdminLayout';
 import Neurologist from "../../assets/HomePage/Neurologist.png";
 
 export const View_doctor = () => {
@@ -17,7 +17,7 @@ export const View_doctor = () => {
     const fetchDoctor = async () => {
       try {
         console.log("Fetching doctor details...");
-        const response = await API.get(`/admin/doctor/${id}`);
+        const response = await API_ADMIN.get(`/admin/doctor/${id}`);
         console.log("Doctor details:", response.data);
         setDoctor(response.data.doctor);
       } catch (error) {
@@ -31,7 +31,7 @@ export const View_doctor = () => {
     const fetchAppointments = async () => {
       try {
         // Fetch appointments and populate patient details
-        const response2 = await API.get(`/admin/allAppointment/${id}?populate=PatientId`);
+        const response2 = await API_ADMIN.get(`/admin/allAppointment/${id}?populate=PatientId`);
         setAppointments(response2.data.appointments);
       } catch (error) {
         console.error("Error fetching appointments:", error);
@@ -43,7 +43,7 @@ export const View_doctor = () => {
   const handleAddAppointment = async () => {
     console.log("Adding appointment...");
     try {
-      const response = await API.post(`/admin/addAppointment`, {
+      const response = await API_ADMIN.post(`/admin/addAppointment`, {
         startTime: start_time,
         endTime: end_time,
         date: date,
@@ -58,7 +58,7 @@ export const View_doctor = () => {
 
   const handleDeleteSlot = async (appointmentId, slotId) => {
     try {
-      await API.delete(`/admin/deleteSlot/${appointmentId}/${slotId}`);
+      await API_ADMIN.delete(`/admin/deleteSlot/${appointmentId}/${slotId}`);
       setShouldRefresh((prev) => !prev);
     } catch (error) {
       console.error("Error deleting slot:", error);

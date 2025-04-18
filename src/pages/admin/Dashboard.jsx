@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { AdminLayout } from "../../Components/Layouts/AdminLayout"; // Import AdminLayout
-import { API } from "../../Config/Api";
-
+import { AdminLayout } from "../../components/Layouts/AdminLayout"; // Import AdminLayout
+import { API_ADMIN } from "../../Config/AdminApi";
+import { Navigate, useNavigate } from "react-router-dom";
 export const AllDoctorAppointments = () => {
+  const navigate = useNavigate();
   const [appointments, setAppointments] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchAppointments = async () => {
+      
       try {
-        const response = await API.get("/admin/alldoctorAppointment");
+        const response = await API_ADMIN.get("/admin/alldoctorAppointment");
         setAppointments(response.data.appointments);
         setLoading(false);
       } catch (error) {

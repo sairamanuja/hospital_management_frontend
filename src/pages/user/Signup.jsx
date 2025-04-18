@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { TextBox } from '../../Components/UI/TextBox';
+import { TextBox } from '../../components/UI/TextBox';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { MainLayout } from '../../Components/Layouts/MainLayout';

@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { AdminProvider } from './context/AdminContext';
 import Home from './pages/user/Home';
 import {ProtectedRoute} from './Config/ProtectedRoutes';
 import {Login} from './pages/user/Login';
@@ -19,31 +20,28 @@ import Appointments from './pages/user/MyAppointments';
 const App = () => {
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/contactus" element={<ContactUs />} />
-        <Route path="/allDoctors" element={<AllDoctors_user />} />
-        <Route path="/aboutus" element={<AboutUs />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/admin/alldoctors" element={<AllDoctors />} />
-        <Route path="/admin/signin" element={<AdminLogin />} />
-        <Route path="/admin/signup" element={<AdminSignup />} />
-        <Route path="/admin/addDoctor" element={<Add_Doctor />} />
-        <Route path="/admin/allappointments" element={<AllDoctorAppointments />} />
-        <Route path="/appointments" element={<Appointments />} />
-        
-        <Route path="/admin/doctor/:id" element={<View_doctor />} />
-        
-        
- 
-        <Route element={<ProtectedRoute />}>
-        <Route path="/doctor/:id" element={<Add_Appointment />} />
+      <AdminProvider>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/contactus" element={<ContactUs />} />
+          <Route path="/allDoctors" element={<AllDoctors_user />} />
+          <Route path="/aboutus" element={<AboutUs />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/admin/alldoctors" element={<AllDoctors />} />
+          <Route path="/admin/signin" element={<AdminLogin />} />
+          <Route path="/admin/signup" element={<AdminSignup />} />
+          <Route path="/admin/addDoctor" element={<Add_Doctor />} />
+          <Route path="/admin/allappointments" element={<AllDoctorAppointments />} />
+          <Route path="/appointments" element={<Appointments />} />
+          <Route path="/admin/doctor/:id" element={<View_doctor />} />
           
-
-        </Route>
-      </Routes>
+          <Route element={<ProtectedRoute />}>
+            <Route path="/doctor/:id" element={<Add_Appointment />} />
+          </Route>
+        </Routes>
+      </AdminProvider>
     </Router>
   );
 };

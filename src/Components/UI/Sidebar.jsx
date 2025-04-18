@@ -29,9 +29,7 @@ export const SideBar = () => {
           <li className="cursor-pointer hover:bg-gray-300 p-2 rounded">
             <Link to="/admin/alldoctors">Doctors List</Link>
           </li>
-          <li className="cursor-pointer hover:bg-gray-300 p-2 rounded">
-            <Link >Patients</Link>
-          </li>
+         
         </ul>
       </div>
     </div>

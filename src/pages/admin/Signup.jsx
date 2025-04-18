@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import {AdminNav} from '../../Components/UI/Navigation/AdminNavbar';
 
 import { TextBox } from '../../components/UI/TextBox';
-import { API } from '../../Config/Api';
+import { API_ADMIN } from '../../Config/AdminApi';
 import { Navigate } from 'react-router-dom';
 
 
@@ -21,7 +21,7 @@ export const AdminSignup = () => {
     e.preventDefault();
     console.log({ name, email, password,address,phone });
     try {
-      const response = await axios.API.post('/admin/signup', { name, email, password,address,phone });
+      const response = await API_ADMIN.post('/admin/signup', { name, email, password,address,phone });
       console.log(response.data);
       alert('Signup successful!');
       return <Navigate to="/admin/signin" />
@@ -81,7 +81,7 @@ export const AdminSignup = () => {
           </form>
           <p className="mt-4 text-gray-500">
             Already have an account?{' '}
-            <a href="/adminlogin" className="text-blue-500">
+            <a href="/admin/signin" className="text-blue-500">
               Login here
             </a>
           </p>

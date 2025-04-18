@@ -1,10 +1,13 @@
 import React from 'react';
 import logo from "../../../assets/HomePage/logo-prescripto.png";
+import { useAdmin } from '../../../context/AdminContext';
+import { Link } from 'react-router-dom';
 
 export const AdminNav = () => {
+  const { isAdmin, logout } = useAdmin(); 
+
   return (
-    <div className="flex flex-row justify-between items-center p-4 border-b-2 border-gray-300 bg-white">
-      {/* Logo and Admin Label */}
+        <div className="flex flex-row justify-between items-center p-4 border-b-2 border-gray-300 bg-white">
       <div className="flex flex-row items-center">
         <img src={logo} alt="Logo" className="w-24 md:w-32" />
         <span className="text-sm font-semibold text-end translate-y-3 -translate-x-2 hidden md:block">
@@ -12,11 +15,22 @@ export const AdminNav = () => {
         </span>
       </div>
 
-      {/* Login Button */}
-      <div className="flex flex-row justify-end items-center">
-        <button className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">
-          Login
-        </button>
+          <div className="flex flex-row justify-end items-center">
+        {isAdmin ? (
+          <button 
+            onClick={logout}
+            className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
+          >
+            Logout
+          </button>
+        ) : (
+          <Link 
+            to="/admin/signin" 
+            className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
+          >
+            Login
+          </Link>
+        )}
       </div>
     </div>
   );
